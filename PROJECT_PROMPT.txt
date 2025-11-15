@@ -1,0 +1,30 @@
+Project Prompt / Requirements
+
+This file records the original prompt and the key decisions taken while creating the Feedback Dashboard project.
+
+Original Task (SDE Intern Task: Feedback Dashboard)
+
+Objective:
+Build and deploy a full-stack Feedback Management Dashboard that allows users to submit feedback, view feedbacks, and analyze basic insights such as positive vs. negative ratings.
+
+Requirements (summary):
+- Frontend: Feedback form (Name, Email, Message, Rating 1-5), send data to backend, display feedbacks in a table, analytics cards (total, avg, positive vs negative)
+- Backend: Express API endpoints POST /api/feedback, GET /api/feedback, GET /api/stats; validate name and message; use MySQL
+- Database: Database name `feedback`, table `feedbacks` columns id, name, email, message, rating, createdAt
+- Deployment: Frontend (Vercel), Backend (Render) recommended; use managed MySQL
+
+Key implementation decisions:
+- Backend uses Node.js + Express with `mysql2` and `dotenv`. It attempts to create DB/table on startup if permitted.
+- Frontend uses Vite + React, with a dev proxy for `/api` and `VITE_API_URL` for production.
+- Added CSV export (client-side) and server-side CSV endpoint `GET /api/feedback/export`.
+- Styling and assets: `frontend/src/styles.css`, `public/logo.svg`, `public/illustration.svg`.
+- Migration file: `backend/create_feedback_schema.sql` was added for creating DB and tables.
+
+How to run locally (short):
+1. Prepare MySQL and create DB `feedback` or let backend create it.
+2. Backend: `cd backend && npm install && copy .env.example .env && node index.js`
+3. Frontend: `cd frontend && npm install && npm run dev`
+
+Repo: https://github.com/Kartik1402/upteky
+
+Generated on: 2025-11-15
